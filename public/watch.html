@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch - LiveStreamify</title>
+    <style>
+        :root {
+            --primary-color: #6441a5;
+            --secondary-color: #b9a3e3;
+            --background-color: #f0f2f5;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        #streamControls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        #streamKeyInput {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #watchButton {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #watchButton:hover {
+            background-color: var(--secondary-color);
+        }
+        #videoElement {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LiveStreamify Watch</h1>
+    </header>
+    <main>
+        <div id="streamControls">
+            <input id="streamKeyInput" type="text" placeholder="Enter Stream Key">
+            <button id="watchButton">Watch</button>
+        </div>
+        <video id="videoElement" autoplay></video>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="watch.js"></script>
+    <script>
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                console.log("Your public IP address is: " + data.ip);
+                // You could display this IP to the user so they can share it
+            });
+    </script>
+</body>
+</html>
