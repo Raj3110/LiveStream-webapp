@@ -1,7 +1,10 @@
 # LiveStream-webapp
-creating a website with live feature
+creating a website with live feature.
+
+
 
 to run (in terminal)- 
+npm install
 nodemon server
 
 access broadcast page : http://localhost:3000/broadcast.html
